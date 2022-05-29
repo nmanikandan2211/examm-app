@@ -1,5 +1,9 @@
-import Quiz from './Quiz';
+/* eslint-disable eslint-comments/no-unlimited-disable */
+/*eslint-disable*/
 
-export {
-    Quiz
-}
+import Quiz from './Quiz';
+import Home from './Home';
+import SignIn from './SignIn';
+import SignUp from './SignUp'
+
+export { Quiz, Home, SignIn, SignUp };
