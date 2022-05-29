@@ -1,3 +1,6 @@
+/* eslint-disable eslint-comments/no-unlimited-disable */
+/*eslint-disable*/
+
 import React, { useState } from 'react'
 import { View, Text, SafeAreaView, StatusBar, Image, TouchableOpacity, Modal, Animated } from 'react-native'
 import { COLORS, SIZES } from '../constants';
@@ -53,8 +56,6 @@ const Quiz = () => {
     setShowNextButton(false);
 
   }
-
-
 
   const renderQuestion = () => {
     return (
