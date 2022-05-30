@@ -2,12 +2,12 @@
 /*eslint-disable*/
 
 import React, { useState } from 'react'
-import { View, Text, SafeAreaView, StatusBar, Image, TouchableOpacity, Modal, Animated } from 'react-native'
+import { View, Text, SafeAreaView, StatusBar, Image, TouchableOpacity, Modal } from 'react-native'
 import { COLORS, SIZES } from '../constants';
 import data from '../data/QuizData';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-const Quiz = () => {
+const Quiz = ({ navigation }) => {
 
   const allQuestions = data;
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
@@ -61,7 +61,17 @@ const Quiz = () => {
     return (
       <View style={{
         marginVertical: 10
+
       }}>
+        <Text
+          onPress={() => navigation.navigate('Home')}
+          style={{
+            fontSize: 20,
+            textAlign: 'center',
+            marginVertical: 20,
+            fontWeight: 'bold',
+            color: COLORS.white,
+          }}>Home</Text>
         {/* Question Counter */}
         <View style={{
           flexDirection: 'row',
@@ -79,6 +89,7 @@ const Quiz = () => {
       </View>
     )
   }
+
   const renderOptions = () => {
     return (
       <View>

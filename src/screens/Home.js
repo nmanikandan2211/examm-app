@@ -1,17 +1,67 @@
 /* eslint-disable eslint-comments/no-unlimited-disable */
 /*eslint-disable*/
 
-import { StyleSheet, Text, View } from 'react-native'
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React from 'react'
+import { signOut } from '../utils/auth';
 
-const Home = () => {
+const Home = ({ navigation }) => {
   return (
-    <View>
-      <Text>Home</Text>
+    <View style={styles.container}>
+      <Text onPress={signOut}
+        style={styles.signOut}>signOut</Text>
+      <View style={styles.bannerContainer}>
+        <Image
+          source={{
+            uri: 'https://cdni.iconscout.com/illustration/premium/thumb/giving-different-feedback-and-review-in-websites-2112230-1779230.png',
+          }}
+          style={styles.banner}
+          resizeMode="contain"
+        />
+      </View>
+      <TouchableOpacity
+        onPress={() => navigation.navigate('Quiz')}
+        style={styles.button}>
+        <Text style={styles.buttonText}>Start</Text>
+      </TouchableOpacity>
     </View>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  banner: {
+    height: 300,
+    width: 300,
+  },
+  bannerContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    flex: 1,
+  },
+  container: {
+    paddingTop: 40,
+    paddingHorizontal: 20,
+    height: '100%',
+  },
+  button: {
+    width: '100%',
+    backgroundColor: '#1A759F',
+    padding: 16,
+    borderRadius: 16,
+    alignItems: 'center',
+    marginBottom: 30,
+  },
+  buttonText: {
+    fontSize: 24,
+    fontWeight: '600',
+    color: 'white',
+  },
+  signOut: {
+    textAlign: 'center',
+    color: '#1A759F',
+    fontSize: 16,
+
+  }
+});
