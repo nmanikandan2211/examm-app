@@ -6,6 +6,8 @@ import { View, Text, SafeAreaView } from 'react-native';
 import FormButton from '../components/FormButton';
 import FormInput from '../components/FormInput';
 import { COLORS } from '../constants/theme';
+import { mailSignIn } from '../utils/auth';
+
 
 const SignIn = ({ navigation }) => {
   const [email, setEmail] = useState('');
@@ -13,7 +15,7 @@ const SignIn = ({ navigation }) => {
 
   const handleOnSubmit = () => {
     if (email != '' && password != '') {
-      // signIn(email, password);
+      mailSignIn(email, password);
     }
   };
 

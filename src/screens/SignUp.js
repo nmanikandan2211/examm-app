@@ -6,6 +6,8 @@ import { View, Text, SafeAreaView, Alert } from 'react-native';
 import FormButton from '../components/FormButton';
 import FormInput from '../components/FormInput';
 import { COLORS } from '../constants/theme';
+import { mailSignUp } from '../utils/auth';
+
 
 const SignUp = ({ navigation }) => {
   const [email, setEmail] = useState('');
@@ -15,8 +17,7 @@ const SignUp = ({ navigation }) => {
   const handleOnSubmit = () => {
     if (email != '' && password != '' && confirmPassword != '') {
       if (password == confirmPassword) {
-        //   SignUp
-        // signUp(email, password);
+        mailSignUp(email, password);
       } else {
         Alert.alert('password did not match');
       }
