@@ -3,7 +3,8 @@
 
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import { SignIn, SignUp } from '../screens';
+import { SignIn, SignUp, PhoneSignUp, OTP } from '../screens';
+
 
 const Stack = createStackNavigator();
 
@@ -15,6 +16,8 @@ const AuthNavigator = () => {
       }}>
       <Stack.Screen name="SignIn" component={SignIn} />
       <Stack.Screen name="SignUp" component={SignUp} />
+      <Stack.Screen name="PhoneSignUp" component={PhoneSignUp} />
+      <Stack.Screen name="OTP" component={OTP} />
     </Stack.Navigator>
   );
 };

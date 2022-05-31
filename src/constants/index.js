@@ -1,9 +1,10 @@
 /* eslint-disable eslint-comments/no-unlimited-disable */
 /*eslint-disable*/
 
-import { COLORS, SIZES } from './theme';
+import { COLORS, SIZES, FONTS } from './theme';
 
 export {
   COLORS,
-  SIZES
+  SIZES,
+  FONTS,
 }
