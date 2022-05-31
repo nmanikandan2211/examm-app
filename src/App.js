@@ -28,7 +28,7 @@ const App = () => {
 
   return (
     <NavigationContainer>
-      {currentUser ? <AppNavigator /> : <AuthNavigator />}
+      {currentUser ? <AuthNavigator /> : <AppNavigator />}
     </NavigationContainer>
   );
 };

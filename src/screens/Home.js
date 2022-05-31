@@ -3,13 +3,12 @@
 
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React from 'react'
-import { signOut } from '../utils/auth';
 
 const Home = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <Text onPress={signOut}
-        style={styles.signOut}>signOut</Text>
+      <Text onPress={() => navigation.navigate('PhoneSignUp')}
+        style={styles.signOut} >SignUp</Text>
       <View style={styles.bannerContainer}>
         <Image
           source={{

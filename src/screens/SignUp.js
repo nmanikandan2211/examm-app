@@ -83,7 +83,7 @@ const SignUp = ({ navigation }) => {
         <Text>Already have an account?</Text>
         <Text
           style={{ marginLeft: 4, color: COLORS.primary }}
-          onPress={() => navigation.navigate('SignIn')}>
+          onPress={() => navigation.navigate('PhoneSignUp')}>
           Sign in
         </Text>
       </View>
