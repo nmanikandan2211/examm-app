@@ -6,14 +6,15 @@ import { Text, View, StyleSheet, Pressable, Image, TextInput, TouchableOpacity }
 // import smurfImg from '../../../assets/smurf.png';
 
 const PhoneSignUp = ({ navigation }) => {
-  const [phoneNumber, addPhoneNumber] = useState('+91');
 
+  const [phoneNumber, addPhoneNumber] = useState('+91');
   const GetOTP = () => {
     if (phoneNumber && phoneNumber.length > 9) {
       navigation.navigate('OTP', { phoneNumber });
     }
     else
       alert("Please enter 10 digit phone number");
+
   }
 
   return (
