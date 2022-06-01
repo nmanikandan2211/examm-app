@@ -7,7 +7,7 @@ import React from 'react'
 const Home = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <Text onPress={() => navigation.navigate('PhoneSignUp')}
+      <Text onPress={() => navigation.navigate('SignUp')}
         style={styles.signOut} >SignUp</Text>
       <View style={styles.bannerContainer}>
         <Image

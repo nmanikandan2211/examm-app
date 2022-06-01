@@ -1,21 +1,60 @@
 /* eslint-disable eslint-comments/no-unlimited-disable */
 /*eslint-disable*/
 
-import React, { useRef, useState } from 'react';
-import { View, Text, StyleSheet, StatusBar, TextInput, TouchableOpacity, } from 'react-native';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import React, { useRef, useState, useEffect } from 'react';
+import auth from '@react-native-firebase/auth';
+import { View, Text, StyleSheet, StatusBar, TextInput, TouchableOpacity } from 'react-native';
 import { COLORS, SIZES, FONTS } from '../constants/theme';
 
-const VerificationScreen = ({
-  route: {
-    params: { phoneNumber },
-  },
-}) => {
+const VerificationScreen = ({ route: { params: { phoneNumber } } }) => {
+
+  const [confirm, setConfirm] = useState(null);
+  const [code, setCode] = useState('');
+  const [test, setTest] = useState('');
+
+
   const firstInput = useRef();
   const secondInput = useRef();
   const thirdInput = useRef();
   const fourthInput = useRef();
-  const [otp, setOtp] = useState({ 1: '', 2: '', 3: '', 4: '' });
+  const fifthInput = useRef();
+  const sixthInput = useRef();
+  const [otp, setOtp] = useState({ 1: '', 2: '', 3: '', 4: '', 5: '', 6: '' });
+
+  // Handle the button press
+  useEffect(() => {
+    signInWithPhoneNumber();
+  }, [])
+
+  async function signInWithPhoneNumber() {
+    try {
+      const confirmation = await auth().signInWithPhoneNumber(phoneNumber);
+      setConfirm(confirmation);
+      console.log("confirmation", confirmation)
+      console.log("phoneNumber", phoneNumber)
+
+      alert(JSON.stringify("confirmation", confirmation));
+    } catch (e) {
+      alert(JSON.stringify("err", e));
+    }
+  }
+
+  console.log("confirm", confirm)
+  console.log("otp", otp)
+  console.log("test", test)
+
+
+  async function confirmCode() {
+    try {
+      const response = await confirm.confirm(test);
+      alert(JSON.stringify("response", response));
+      if (response) {
+        navigation.navigate('Home');
+      }
+    } catch (e) {
+      alert(JSON.stringify("verify err", e));
+    }
+  }
 
   return (
     <View style={styles.container}>
@@ -25,11 +64,6 @@ const VerificationScreen = ({
         translucent
       />
       <View style={styles.headerContainer}>
-        <Ionicons
-          name="chevron-back-outline"
-          size={30}
-          onPress={() => navigation.goBack()}
-        />
         <Text style={styles.headerTitle}>OTP Verification</Text>
       </View>
       <Text style={styles.title}>OTP Verification</Text>
@@ -82,14 +116,47 @@ const VerificationScreen = ({
             ref={fourthInput}
             onChangeText={text => {
               setOtp({ ...otp, 4: text });
-              !text && thirdInput.current.focus();
+              text ? fifthInput.current.focus() : thirdInput.current.focus();
+            }}
+          />
+        </View>
+        <View style={styles.otpBox}>
+          <TextInput
+            style={styles.otpText}
+            keyboardType="number-pad"
+            maxLength={1}
+            ref={fifthInput}
+            onChangeText={text => {
+              setOtp({ ...otp, 5: text });
+              text ? sixthInput.current.focus() : fifthInput.current.focus();
+            }}
+          />
+        </View>
+        <View style={styles.otpBox}>
+          <TextInput
+            style={styles.otpText}
+            keyboardType="number-pad"
+            maxLength={1}
+            ref={sixthInput}
+            onChangeText={text => {
+              setOtp({ ...otp, 6: text });
+              !text && fifthInput.current.focus();
             }}
           />
         </View>
       </View>
+      <View>
+        <TextInput
+          value={test}
+          style={styles.phoneinput}
+          placeholder="otp"
+          onChangeText={(text) => setTest(text)}
+          keyboardType="number-pad"
+        />
+      </View>
       <TouchableOpacity
         style={styles.signinButton}
-        onPress={() => console.log(otp)}>
+        onPress={confirmCode}>
         <Text style={styles.signinButtonText}>Verify</Text>
       </TouchableOpacity>
     </View>
