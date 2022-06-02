@@ -3,15 +3,13 @@
 
 import React, { useRef, useState, useEffect } from 'react';
 import auth from '@react-native-firebase/auth';
-import { View, Text, StyleSheet, StatusBar, TextInput, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, StatusBar, TextInput, TouchableOpacity, Button } from 'react-native';
 import { COLORS, SIZES, FONTS } from '../constants/theme';
 
 const VerificationScreen = ({ route: { params: { phoneNumber } } }) => {
 
   const [confirm, setConfirm] = useState(null);
   const [code, setCode] = useState('');
-  const [test, setTest] = useState('');
-
 
   const firstInput = useRef();
   const secondInput = useRef();
@@ -21,33 +19,30 @@ const VerificationScreen = ({ route: { params: { phoneNumber } } }) => {
   const sixthInput = useRef();
   const [otp, setOtp] = useState({ 1: '', 2: '', 3: '', 4: '', 5: '', 6: '' });
 
-  // Handle the button press
   useEffect(() => {
     signInWithPhoneNumber();
   }, [])
 
-  async function signInWithPhoneNumber() {
+
+  const signInWithPhoneNumber = async () => {
     try {
       const confirmation = await auth().signInWithPhoneNumber(phoneNumber);
       setConfirm(confirmation);
-      console.log("confirmation", confirmation)
-      console.log("phoneNumber", phoneNumber)
-
+      console.log('phoneNumber', phoneNumber)
       alert(JSON.stringify("confirmation", confirmation));
     } catch (e) {
       alert(JSON.stringify("err", e));
     }
   }
 
-  console.log("confirm", confirm)
-  console.log("otp", otp)
-  console.log("test", test)
+  console.log('code', code)
+  console.log('phoneNumber', phoneNumber)
 
-
-  async function confirmCode() {
+  const confirmCode = async () => {
     try {
-      const response = await confirm.confirm(test);
+      const response = await confirm.confirm(code);
       alert(JSON.stringify("response", response));
+      console.log("response", response)
       if (response) {
         navigation.navigate('Home');
       }
@@ -145,20 +140,22 @@ const VerificationScreen = ({ route: { params: { phoneNumber } } }) => {
           />
         </View>
       </View>
-      <View>
+      <View style={{ justifyContent: 'center', alignItems: 'center', marginHorizontal: 20 }}>
         <TextInput
-          value={test}
-          style={styles.phoneinput}
-          placeholder="otp"
-          onChangeText={(text) => setTest(text)}
+          value={code}
+          style={styles.phoneinputtest}
+          placeholder='Enter 6 digit OTP'
+          onChangeText={text => setCode(text)}
           keyboardType="number-pad"
+          maxLength={6}
         />
       </View>
-      <TouchableOpacity
+      <Button title="Confirm Code" onPress={() => confirmCode()} />
+      {/* <TouchableOpacity
         style={styles.signinButton}
-        onPress={confirmCode}>
+        onPress={() => confirmCode()}>
         <Text style={styles.signinButtonText}>Verify</Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
     </View>
   );
 };
@@ -188,6 +185,11 @@ const styles = StyleSheet.create({
     marginTop: 50,
     marginBottom: 10,
     marginHorizontal: 20,
+  },
+
+  phoneinputtest: {
+    fontSize: 20,
+    color: COLORS.black,
   },
   content: {
     fontSize: 20,

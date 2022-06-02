@@ -2,8 +2,7 @@
 /*eslint-disable*/
 
 import React, { useState } from 'react';
-import { Text, View, StyleSheet, Pressable, Image, TextInput, TouchableOpacity } from 'react-native';
-// import smurfImg from '../../../assets/smurf.png';
+import { Text, View, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 
 const PhoneSignUp = ({ navigation }) => {
 
@@ -56,7 +55,8 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     backgroundColor: 'azure',
     fontSize: 20,
-    borderRadius: 2
+    borderRadius: 2,
+    color: 'blue'
   },
   getotp: {
     backgroundColor: 'blue',
