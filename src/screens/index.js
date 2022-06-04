@@ -8,6 +8,7 @@ import SignUp from './SignUp';
 import PhoneSignUp from './PhoneSignUp';
 import OTP from './OTP';
 import RecievedOTP from './RecievedOTP';
+import Splash from './Splash';
 
 
-export { Quiz, Home, SignIn, SignUp, PhoneSignUp, OTP, RecievedOTP };
+export { Quiz, Home, SignIn, SignUp, PhoneSignUp, OTP, RecievedOTP, Splash };

@@ -159,7 +159,7 @@ const Quiz = ({ navigation }) => {
         <TouchableOpacity
           onPress={handleNext}
           style={{
-            marginTop: 20, width: '100%', backgroundColor: COLORS.accent, padding: 20, borderRadius: 5
+            marginTop: 20, width: '100%', backgroundColor: COLORS.orange, padding: 20, borderRadius: 5
           }}>
           <Text style={{ fontSize: 20, color: COLORS.white, textAlign: 'center' }}>Next</Text>
         </TouchableOpacity>
@@ -179,7 +179,7 @@ const Quiz = ({ navigation }) => {
         flex: 1,
         paddingVertical: 40,
         paddingHorizontal: 16,
-        backgroundColor: COLORS.background,
+        backgroundColor: COLORS.primary,
         position: 'relative'
       }}>
 
@@ -231,7 +231,7 @@ const Quiz = ({ navigation }) => {
               <TouchableOpacity
                 onPress={restartQuiz}
                 style={{
-                  backgroundColor: COLORS.accent,
+                  backgroundColor: COLORS.orange,
                   padding: 20, width: '100%', borderRadius: 20
                 }}>
                 <Text style={{

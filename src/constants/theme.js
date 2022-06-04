@@ -5,17 +5,16 @@ import { Dimensions } from "react-native";
 const { width, height } = Dimensions.get('window');
 
 export const COLORS = {
-  primary: "#252c4a",
-  secondary: '#1E90FF',
-  accent: '#3498db',
-
+  primary: "#023047",
+  secondary: '#219EBC',
+  accent: '#8ECAE6',
+  yellow: '#FFB703',
+  orange: '#FB8500',
   success: '#00C851',
   error: '#ff4444',
-
-  black: "#171717",
-  white: "#FFFFFF",
-  background: "#252C4A",
-  border: '#F5F5F7',
+  black: "#212529",
+  white: "#F8F9FA",
+  gray: '#DEE2E6',
 
 }
 export const SIZES = {
