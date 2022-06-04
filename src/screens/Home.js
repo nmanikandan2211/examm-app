@@ -21,7 +21,7 @@ const Home = ({ navigation }) => {
       <TouchableOpacity
         onPress={() => navigation.navigate('Quiz')}
         style={styles.button}>
-        <Text style={styles.buttonText}>Start</Text>
+        <Text style={styles.buttonText}>தொடங்கு</Text>
       </TouchableOpacity>
     </View>
   );
@@ -56,6 +56,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: '600',
     color: 'white',
+    fontFamily: 'MuktaMalar-Bold'
   },
   signOut: {
     textAlign: 'center',

@@ -2,11 +2,16 @@
 /*eslint-disable*/
 
 import React, { useState } from 'react';
-import { Text, View, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
+import { Text, View, StyleSheet, TextInput, TouchableOpacity, Image } from 'react-native';
+import { COLORS, SIZES } from '../constants';
+
 
 const PhoneSignUp = ({ navigation }) => {
 
-  const [phoneNumber, addPhoneNumber] = useState('+91');
+  const [number, setNumber] = useState('');
+  const phoneNumber = "+91" + number
+
+  console.log(phoneNumber)
   const GetOTP = () => {
     if (phoneNumber && phoneNumber.length > 9) {
       navigation.navigate('OTP', { phoneNumber });
@@ -18,16 +23,30 @@ const PhoneSignUp = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
+      <Image
+        source={require('../assets/images/Studing.png')}
+        style={styles.studying}
+      />
       <Text style={styles.title}>
         Please Enter your  phone number
       </Text>
-      <TextInput
-        value={phoneNumber}
-        style={styles.phoneinput}
-        placeholder="+91 1234567890"
-        onChangeText={(text) => addPhoneNumber(text)}
-        keyboardType="number-pad"
-      />
+      <View style={styles.phonecountryinput}>
+        <TextInput
+          style={styles.countryinput}
+          placeholder="+91"
+          keyboardType="number-pad"
+          editable={false}
+          selectTextOnFocus={false}
+        />
+        <TextInput
+          value={number}
+          style={styles.phoneinput}
+          placeholder="Enter Phone Number"
+          onChangeText={(text) => setNumber(text)}
+          keyboardType="number-pad"
+        />
+      </View>
+
       <TouchableOpacity onPress={GetOTP}
         style={styles.getotp}>
         <Text style={styles.btnText}>
@@ -40,43 +59,64 @@ const PhoneSignUp = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#252c4a'
+    backgroundColor: COLORS.primary
+  },
+  studying: {
+    width: SIZES.width,
+    height: 250,
+    marginTop: 20,
+    zIndex: -1,
   },
   btnContainer: {
     padding: 20,
     borderRadius: 10,
     marginTop: 30,
   },
-  phoneinput: {
+  phonecountryinput: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  countryinput: {
     height: 50,
-    width: 300,
-    paddingLeft: 20,
-    backgroundColor: 'azure',
+    width: 70,
+    backgroundColor: COLORS.white,
     fontSize: 20,
     borderRadius: 2,
-    color: 'blue'
+    color: COLORS.black,
+    marginRight: 10,
+    textAlign: 'center'
+  },
+  phoneinput: {
+    height: 50,
+    width: 250,
+    paddingLeft: 20,
+    backgroundColor: COLORS.white,
+    fontSize: 20,
+    borderRadius: 2,
+    color: COLORS.black,
+
   },
   getotp: {
-    backgroundColor: 'blue',
+    backgroundColor: COLORS.orange,
     padding: 10,
     borderRadius: 8,
     marginTop: 50
   },
   btnText: {
-    color: 'white',
+    color: COLORS.white,
     fontSize: 20,
     fontWeight: 'bold',
   },
   text: {
-    color: 'black',
+    color: COLORS.black,
     fontSize: 20,
   },
   title: {
-    color: 'white',
+    color: COLORS.white,
     fontSize: 24,
-    marginBottom: 50,
+    marginBottom: 40,
+    marginTop: 25,
     marginHorizontal: 20,
   }
 });
