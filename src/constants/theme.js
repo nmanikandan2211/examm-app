@@ -15,13 +15,13 @@ export const COLORS = {
   black: "#212529",
   white: "#F8F9FA",
   gray: '#DEE2E6',
+  darkgray: '#ADB5BD',
 
 }
 export const SIZES = {
   base: 10,
   width,
   height,
-
 }
 
 export const FONTS = {

@@ -3,8 +3,9 @@
 
 import React, { useRef, useState, useEffect } from 'react';
 import auth from '@react-native-firebase/auth';
-import { View, Text, StyleSheet, StatusBar, TextInput, Button, Alert } from 'react-native';
+import { View, SafeAreaView, Text, StyleSheet, StatusBar, TextInput, Button, Alert } from 'react-native';
 import { COLORS, SIZES, FONTS } from '../constants/theme';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const VerificationScreen = ({ route: { params: { phoneNumber } }, navigation }) => {
 
@@ -39,20 +40,17 @@ const VerificationScreen = ({ route: { params: { phoneNumber } }, navigation }) 
       const response = await confirm.confirm(code);
       navigation.navigate('Home');
     } catch {
-      Alert.alert("Please enter correct verification code", "iu", [{ text: "OK" }]);
+      Alert.alert("", "Please enter correct verification code", [{ text: "OK" }]);
     }
   }
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <StatusBar
         barStyle="dark-content"
         backgroundColor={COLORS.white}
         translucent
       />
-      <View style={styles.headerContainer}>
-        <Text style={styles.headerTitle}>OTP Verification</Text>
-      </View>
       <Text style={styles.title}>OTP Verification</Text>
       <Text style={styles.content}>
         Enter the OTP number just sent you at{' '}
@@ -115,7 +113,7 @@ const VerificationScreen = ({ route: { params: { phoneNumber } }, navigation }) 
             ref={fifthInput}
             onChangeText={text => {
               setOtp({ ...otp, 5: text });
-              text ? sixthInput.current.focus() : fifthInput.current.focus();
+              text ? sixthInput.current.focus() : fourthInput.current.focus();
             }}
           />
         </View>
@@ -132,15 +130,21 @@ const VerificationScreen = ({ route: { params: { phoneNumber } }, navigation }) 
           />
         </View>
       </View>
-      <Button title="Confirm Code" onPress={() => confirmCode()} />
-    </View>
+      <TouchableOpacity
+        onPress={() => confirmCode()}
+        style={styles.button}
+      >
+        <Text style={styles.confirmtext}>CONFORM</Text>
+      </TouchableOpacity>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: COLORS.white,
+    backgroundColor: COLORS.primary,
+    alignItems: "center"
   },
   headerContainer: {
     flexDirection: 'row',
@@ -156,53 +160,52 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   title: {
-    fontSize: 20,
+    color: COLORS.white,
+    fontSize: 24,
     fontFamily: FONTS.POPPINS_MEDIUM,
     lineHeight: 20 * 1.4,
     marginTop: 50,
-    marginBottom: 10,
+    marginBottom: 40,
     marginHorizontal: 20,
   },
-
   phoneinputtest: {
     fontSize: 20,
-    color: COLORS.black,
+    color: COLORS.white,
   },
   content: {
-    fontSize: 20,
+    fontSize: 18,
     fontFamily: FONTS.POPPINS_MEDIUM,
     marginTop: 10,
-    marginBottom: 20,
+    marginBottom: 30,
     marginHorizontal: 20,
+    color: COLORS.white,
+
   },
   phoneNumberText: {
     fontSize: 18,
     fontFamily: FONTS.POPPINS_REGULAR,
     lineHeight: 18 * 1.4,
-    color: COLORS.primary,
+    color: COLORS.white,
   },
   otpContainer: {
     marginHorizontal: 20,
-    marginBottom: 20,
+    marginBottom: 30,
     justifyContent: 'space-evenly',
     alignItems: 'center',
     flexDirection: 'row',
   },
   otpBox: {
-    width: 40,
-    height: 40,
+    width: 50,
+    height: 50,
     borderRadius: 5,
-    borderColor: COLORS.primary,
+    borderColor: COLORS.orange,
     borderWidth: 1,
     margin: 5,
   },
   otpText: {
-    fontSize: 25,
-    color: COLORS.black,
-    padding: 0,
+    fontSize: 16,
+    color: COLORS.white,
     textAlign: 'center',
-    paddingHorizontal: 18,
-    paddingVertical: 10,
   },
   signinButton: {
     backgroundColor: COLORS.primary,
@@ -218,6 +221,17 @@ const styles = StyleSheet.create({
     lineHeight: 18 * 1.4,
     color: COLORS.white,
   },
+  button: {
+    width: 200,
+    backgroundColor: COLORS.secondary,
+    paddingVertical: 10,
+    alignItems: "center",
+    borderRadius: 8,
+  },
+  confirmtext: {
+    color: COLORS.white,
+    fontSize: 18,
+  }
 });
 
 export default VerificationScreen;

@@ -1,7 +1,7 @@
 /* eslint-disable eslint-comments/no-unlimited-disable */
 /*eslint-disable*/
 
-import { StyleSheet, View, Text } from 'react-native'
+import { StyleSheet, SafeAreaView, Text, StatusBar } from 'react-native'
 import React from 'react'
 import LottieView from 'lottie-react-native';
 import { COLORS } from '../constants';
@@ -9,8 +9,8 @@ import { COLORS } from '../constants';
 
 const Splash = ({ navigation }) => {
   return (
-
-    <View style={styles.splash}>
+    <SafeAreaView style={styles.splash}>
+      <StatusBar hidden />
       <Text style={styles.victory}>
         Victory
       </Text>
@@ -23,7 +23,7 @@ const Splash = ({ navigation }) => {
         onAnimationFinish={() => {
           navigation.navigate("PhoneSignUp")
         }} />
-    </View>
+    </SafeAreaView>
 
   )
 }
