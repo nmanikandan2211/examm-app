@@ -2,58 +2,85 @@
 /*eslint-disable*/
 
 import React, { useState } from 'react';
-import { Text, View, StyleSheet, TextInput, TouchableOpacity, Image } from 'react-native';
-import { COLORS, SIZES } from '../constants';
-
+import { Text, View, SafeAreaView, StyleSheet, TextInput, TouchableOpacity, Image, StatusBar, Alert } from 'react-native';
+import { COLORS } from '../constants';
 
 const PhoneSignUp = ({ navigation }) => {
 
   const [number, setNumber] = useState('');
   const phoneNumber = "+91" + number
 
-  console.log(phoneNumber)
   const GetOTP = () => {
-    if (phoneNumber && phoneNumber.length > 9) {
+    if (phoneNumber && number.length > 9) {
       navigation.navigate('OTP', { phoneNumber });
     }
     else
-      alert("Please enter 10 digit phone number");
-
+      Alert.alert("", "Please enter 10 Digit Mobile Number", [{ text: "OK" }]);
   }
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
+      {/* <StatusBar hidden /> */}
       <Image
-        source={require('../assets/images/Studing.png')}
+        source={require('../assets/images/studying.png')}
         style={styles.studying}
       />
-      <Text style={styles.title}>
-        Please Enter your  phone number
-      </Text>
+      <View style={{ flexDirection: 'row', marginBottom: 30, marginTop: 40, width: 150 }}>
+        <View style={styles.separate} />
+        <Text style={styles.separatetext}>Login with phone</Text>
+        <View style={styles.separate} />
+      </View>
       <View style={styles.phonecountryinput}>
         <TextInput
           style={styles.countryinput}
           placeholder="+91"
+          placeholderTextColor="#212529"
           keyboardType="number-pad"
           editable={false}
           selectTextOnFocus={false}
         />
         <TextInput
           value={number}
-          style={styles.phoneinput}
+          style={{
+            height: 45,
+            width: 200,
+            paddingLeft: 20,
+            backgroundColor: COLORS.white,
+            borderRadius: 2,
+            color: COLORS.black,
+            fontSize: number ? 18 : 16,
+          }}
           placeholder="Enter Phone Number"
+          placeholderTextColor='#ADB5BD'
           onChangeText={(text) => setNumber(text)}
           keyboardType="number-pad"
+          maxLength={10}
         />
       </View>
-
       <TouchableOpacity onPress={GetOTP}
         style={styles.getotp}>
         <Text style={styles.btnText}>
-          Get OTP!
+          GET OTP
         </Text>
       </TouchableOpacity>
-    </View>
+      <View style={{ flexDirection: 'row', marginTop: 100, width: 150 }}>
+        <View style={styles.separate} />
+        <Text style={styles.separatetext}>Login with Social</Text>
+        <View style={styles.separate} />
+      </View>
+      <View style={styles.social}>
+        <Image
+          source={require('../assets/images/googleicon.png')}
+          style={styles.google}
+        />
+        <View>
+          <Image
+            source={require('../assets/images/facebookicon.png')}
+            style={styles.facebook}
+          />
+        </View>
+      </View>
+    </SafeAreaView>
   );
 };
 const styles = StyleSheet.create({
@@ -63,9 +90,9 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.primary
   },
   studying: {
-    width: SIZES.width,
-    height: 250,
-    marginTop: 20,
+    width: 400,
+    height: 260,
+    marginTop: 30,
     zIndex: -1,
   },
   btnContainer: {
@@ -78,35 +105,26 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   countryinput: {
-    height: 50,
+    height: 45,
     width: 70,
     backgroundColor: COLORS.white,
-    fontSize: 20,
+    fontSize: 18,
     borderRadius: 2,
     color: COLORS.black,
-    marginRight: 10,
+    marginRight: 5,
     textAlign: 'center'
   },
-  phoneinput: {
-    height: 50,
-    width: 250,
-    paddingLeft: 20,
-    backgroundColor: COLORS.white,
-    fontSize: 20,
-    borderRadius: 2,
-    color: COLORS.black,
-
-  },
   getotp: {
-    backgroundColor: COLORS.orange,
-    padding: 10,
+    width: 200,
+    backgroundColor: COLORS.secondary,
     borderRadius: 8,
-    marginTop: 50
+    marginTop: 40,
+    alignItems: "center",
+    paddingVertical: 10,
   },
   btnText: {
     color: COLORS.white,
-    fontSize: 20,
-    fontWeight: 'bold',
+    fontSize: 18,
   },
   text: {
     color: COLORS.black,
@@ -114,10 +132,47 @@ const styles = StyleSheet.create({
   },
   title: {
     color: COLORS.white,
-    fontSize: 24,
+    fontSize: 20,
     marginBottom: 40,
     marginTop: 25,
     marginHorizontal: 20,
+    textAlign: 'center'
+  },
+  login: {
+    color: COLORS.white,
+    fontSize: 16,
+    marginBottom: 40,
+    marginTop: 10,
+    marginHorizontal: 20,
+    textAlign: 'center'
+  },
+  social: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-evenly',
+    marginTop: 15,
+  },
+  google: {
+    height: 30,
+    width: 30,
+    margin: 25,
+  },
+  facebook: {
+    height: 30,
+    width: 30,
+    margin: 25,
+  },
+  separate: {
+    backgroundColor: COLORS.darkgray,
+    height: 1,
+    flex: 1,
+    alignSelf: 'center'
+  },
+  separatetext: {
+    alignSelf: 'center',
+    paddingHorizontal: 5,
+    fontSize: 16,
+    color: COLORS.darkgray
   }
 });
 
