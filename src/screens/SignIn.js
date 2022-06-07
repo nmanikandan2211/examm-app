@@ -1,21 +1,23 @@
 /* eslint-disable eslint-comments/no-unlimited-disable */
 /*eslint-disable*/
 
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { View, Text, SafeAreaView } from 'react-native';
 import FormButton from '../components/FormButton';
 import FormInput from '../components/FormInput';
 import { COLORS } from '../constants/theme';
-import { mailSignIn } from '../utils/auth';
-
+import { AuthContext } from '../navigator/AuthProvider';
 
 const SignIn = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const { login } = useContext(AuthContext);
+
   const handleOnSubmit = () => {
     if (email != '' && password != '') {
-      mailSignIn(email, password);
+      login(email, password);
+      navigation.navigate('Home')
     }
   };
 
@@ -28,7 +30,6 @@ const SignIn = ({ navigation }) => {
         justifyContent: 'flex-start',
         padding: 20,
       }}>
-      {/* Header */}
       <Text
         style={{
           fontSize: 24,
@@ -38,8 +39,6 @@ const SignIn = ({ navigation }) => {
         }}>
         Sign In
       </Text>
-
-      {/* Email */}
       <FormInput
         labelText="Email"
         placeholderText="enter your email"
@@ -47,8 +46,6 @@ const SignIn = ({ navigation }) => {
         value={email}
         keyboardType={'email-address'}
       />
-
-      {/* Password */}
       <FormInput
         labelText="Password"
         placeholderText="enter your password"
@@ -56,20 +53,16 @@ const SignIn = ({ navigation }) => {
         value={password}
         secureTextEntry={true}
       />
-
-      {/* Submit button */}
       <FormButton
         labelText="Submit"
         handleOnPress={handleOnSubmit}
         style={{ width: '100%' }}
       />
-
-      {/* Footer */}
       <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 20 }}>
         <Text>Don't have an account?</Text>
         <Text
           style={{ marginLeft: 4, color: COLORS.primary }}
-          onPress={() => navigation.navigate('PhoneSignUp')}>
+          onPress={() => navigation.navigate('SignUp')}>
           Create account
         </Text>
       </View>

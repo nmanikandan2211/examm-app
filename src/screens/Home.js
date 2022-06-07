@@ -2,13 +2,18 @@
 /*eslint-disable*/
 
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import React from 'react'
+import React, { useContext } from 'react';
+import { AuthContext } from '../navigator/AuthProvider';
 
 const Home = ({ navigation }) => {
+
+  const { user, logout } = useContext(AuthContext);
+
   return (
     <View style={styles.container}>
-      <Text onPress={() => navigation.navigate('SignUp')}
-        style={styles.signOut} >SignUp</Text>
+
+      <Text style={styles.signOut} >{user.uid}</Text>
+      <Text onPress={() => { logout() }} style={styles.signOut} >SignOut</Text>
       <View style={styles.bannerContainer}>
         <Image
           source={{

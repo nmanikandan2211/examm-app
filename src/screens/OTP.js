@@ -20,8 +20,6 @@ const VerificationScreen = ({ route: { params: { phoneNumber } }, navigation }) 
   const [otp, setOtp] = useState({ 1: '', 2: '', 3: '', 4: '', 5: '', 6: '' });
   const code = Object.values(otp).join("");
 
-  console.log("code", code)
-
   useEffect(() => {
     signInWithPhoneNumber();
   }, [])

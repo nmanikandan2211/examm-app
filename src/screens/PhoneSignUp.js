@@ -1,12 +1,15 @@
 /* eslint-disable eslint-comments/no-unlimited-disable */
 /*eslint-disable*/
 
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Text, View, SafeAreaView, StyleSheet, TextInput, TouchableOpacity, Image, StatusBar, Alert } from 'react-native';
 import { COLORS } from '../constants';
+import { AuthContext } from '../navigator/AuthProvider';
+
 
 const PhoneSignUp = ({ navigation }) => {
 
+  const { googleLogin } = useContext(AuthContext);
   const [number, setNumber] = useState('');
   const phoneNumber = "+91" + number
 
@@ -20,7 +23,6 @@ const PhoneSignUp = ({ navigation }) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      {/* <StatusBar hidden /> */}
       <Image
         source={require('../assets/images/studying.png')}
         style={styles.studying}
@@ -68,17 +70,19 @@ const PhoneSignUp = ({ navigation }) => {
         <Text style={styles.separatetext}>Login with Social</Text>
         <View style={styles.separate} />
       </View>
-      <View style={styles.social}>
-        <Image
-          source={require('../assets/images/googleicon.png')}
-          style={styles.google}
-        />
-        <View>
+      <View style={styles.social} >
+        <TouchableOpacity onPress={() => googleLogin()}>
+          <Image
+            source={require('../assets/images/googleicon.png')}
+            style={styles.google}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => googleLogin()}>
           <Image
             source={require('../assets/images/facebookicon.png')}
-            style={styles.facebook}
+            style={styles.google}
           />
-        </View>
+        </TouchableOpacity>
       </View>
     </SafeAreaView>
   );
