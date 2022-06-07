@@ -72,6 +72,17 @@ const Quiz = ({ navigation }) => {
             fontWeight: 'bold',
             color: COLORS.white,
           }}>Home</Text>
+
+        <Text
+          onPress={() => { onSignOut }}
+          style={{
+            fontSize: 20,
+            textAlign: 'center',
+            marginVertical: 20,
+            fontWeight: 'bold',
+            color: COLORS.white,
+          }}>signOut</Text>
+
         {/* Question Counter */}
         <View style={{
           flexDirection: 'row',
