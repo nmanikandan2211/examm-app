@@ -1,4 +1,4 @@
-package com.quizapp.newarchitecture;
+package com.examm.newarchitecture;
 
 import android.app.Application;
 import androidx.annotation.NonNull;
@@ -19,9 +19,9 @@ import com.facebook.react.fabric.CoreComponentsRegistry;
 import com.facebook.react.fabric.EmptyReactNativeConfig;
 import com.facebook.react.fabric.FabricJSIModuleProvider;
 import com.facebook.react.uimanager.ViewManagerRegistry;
-import com.quizapp.BuildConfig;
-import com.quizapp.newarchitecture.components.MainComponentsRegistry;
-import com.quizapp.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
+import com.examm.BuildConfig;
+import com.examm.newarchitecture.components.MainComponentsRegistry;
+import com.examm.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
 import java.util.ArrayList;
 import java.util.List;
 

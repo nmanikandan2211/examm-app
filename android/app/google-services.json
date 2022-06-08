@@ -1,41 +1,41 @@
 {
   "project_info": {
-    "project_number": "650019709263",
-    "project_id": "tnpscquizapp-f3565",
-    "storage_bucket": "tnpscquizapp-f3565.appspot.com"
+    "project_number": "636409869998",
+    "project_id": "examm-760de",
+    "storage_bucket": "examm-760de.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:650019709263:android:a7cb31c9b15b61f67de53a",
+        "mobilesdk_app_id": "1:636409869998:android:8d222f4900374c6329df3f",
         "android_client_info": {
-          "package_name": "com.quizapp"
+          "package_name": "com.examm"
         }
       },
       "oauth_client": [
         {
-          "client_id": "650019709263-q66rtv4icd7saeljvkdu1fd10a1pcmdq.apps.googleusercontent.com",
+          "client_id": "636409869998-gi7t7mn1pv818ep99rm429si450ge1el.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.quizapp",
-            "certificate_hash": "93a6b0d8d192e9cc9a14a0bd23bb6731fc71c2be"
+            "package_name": "com.examm",
+            "certificate_hash": "e8b1622da44196a658e6c263da418786e969e97c"
           }
         },
         {
-          "client_id": "650019709263-gkb0lr7fsq6khtc1e2k4da2k05rgub1d.apps.googleusercontent.com",
+          "client_id": "636409869998-qk14sdjl86cn6f6k9ih34a4jmo1ksh2t.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyD_QRhCdCTzmi_7-poiSu2Ldyoo0BTOkzg"
+          "current_key": "AIzaSyC7UEdg9ZsIgnQm9TTViFs7KTX9sTKB_Ng"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "650019709263-gkb0lr7fsq6khtc1e2k4da2k05rgub1d.apps.googleusercontent.com",
+              "client_id": "636409869998-qk14sdjl86cn6f6k9ih34a4jmo1ksh2t.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
