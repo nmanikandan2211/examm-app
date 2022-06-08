@@ -9,7 +9,7 @@ import { AuthContext } from '../navigator/AuthProvider';
 
 const PhoneSignUp = ({ navigation }) => {
 
-  const { googleLogin } = useContext(AuthContext);
+  const { googleLogin, fbLogin } = useContext(AuthContext);
   const [number, setNumber] = useState('');
   const phoneNumber = "+91" + number
 
@@ -77,7 +77,7 @@ const PhoneSignUp = ({ navigation }) => {
             style={styles.google}
           />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => googleLogin()}>
+        <TouchableOpacity onPress={() => fbLogin()}>
           <Image
             source={require('../assets/images/facebookicon.png')}
             style={styles.google}
