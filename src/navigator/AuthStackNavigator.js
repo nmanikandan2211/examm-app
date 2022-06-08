@@ -14,7 +14,7 @@ const AuthStackNavigator = () => {
 
   useEffect(() => {
     GoogleSignin.configure({
-      webClientId: "650019709263-gkb0lr7fsq6khtc1e2k4da2k05rgub1d.apps.googleusercontent.com",
+      webClientId: "636409869998-qk14sdjl86cn6f6k9ih34a4jmo1ksh2t.apps.googleusercontent.com",
     });
 
   }, []);
@@ -26,10 +26,10 @@ const AuthStackNavigator = () => {
         headerShown: false,
       }}>
       <Stack.Screen name="Splash" component={Splash} />
+      <Stack.Screen name="SignUp" component={SignUp} />
       <Stack.Screen name="PhoneSignUp" component={PhoneSignUp} />
       <Stack.Screen name="OTP" component={OTP} />
       <Stack.Screen name="SignIn" component={SignIn} />
-      <Stack.Screen name="SignUp" component={SignUp} />
     </Stack.Navigator>
   );
 };
