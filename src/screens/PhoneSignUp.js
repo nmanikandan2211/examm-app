@@ -9,7 +9,7 @@ import { AuthContext } from '../navigator/AuthProvider';
 
 const PhoneSignUp = ({ navigation }) => {
 
-  const { googleLogin, fbLogin } = useContext(AuthContext);
+  const { googleLogin, fbLogin, login } = useContext(AuthContext);
   const [number, setNumber] = useState('');
   const phoneNumber = "+91" + number
 
@@ -65,7 +65,7 @@ const PhoneSignUp = ({ navigation }) => {
           GET OTP
         </Text>
       </TouchableOpacity>
-      <View style={{ flexDirection: 'row', marginTop: 100, width: 150 }}>
+      <View style={{ flexDirection: 'row', marginTop: 70, width: 150 }}>
         <View style={styles.separate} />
         <Text style={styles.separatetext}>Login with Social</Text>
         <View style={styles.separate} />
@@ -80,7 +80,13 @@ const PhoneSignUp = ({ navigation }) => {
         <TouchableOpacity onPress={() => fbLogin()}>
           <Image
             source={require('../assets/images/facebookicon.png')}
-            style={styles.google}
+            style={styles.facebook}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
+          <Image
+            source={require('../assets/images/mailicon.png')}
+            style={styles.mail}
           />
         </TouchableOpacity>
       </View>
@@ -154,7 +160,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-evenly',
-    marginTop: 15,
+    marginTop: 10,
   },
   google: {
     height: 30,
@@ -164,6 +170,11 @@ const styles = StyleSheet.create({
   facebook: {
     height: 30,
     width: 30,
+    margin: 25,
+  },
+  mail: {
+    height: 34,
+    width: 34,
     margin: 25,
   },
   separate: {

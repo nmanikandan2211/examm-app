@@ -11,7 +11,6 @@ const Home = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-
       <Text style={styles.signOut} >{user.uid}</Text>
       <Text onPress={() => { logout() }} style={styles.signOut} >SignOut</Text>
       <View style={styles.bannerContainer}>
