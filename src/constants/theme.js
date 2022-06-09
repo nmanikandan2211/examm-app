@@ -18,6 +18,8 @@ export const COLORS = {
   darkgray: '#ADB5BD',
 
 }
+
+
 export const SIZES = {
   base: 10,
   width,
@@ -34,6 +36,8 @@ export const FONTS = {
   POPPINS_REGULAR: 'Poppins-Regular',
   POPPINS_SEMI_BOLD: 'Poppins-SemiBold',
   POPPINS_THIN: 'Poppins-Thin',
+  PROMPT_BLOCK: 'Prompt-Black',
+  Prompt_Medium: 'Prompt-Medium',
 };
 
 

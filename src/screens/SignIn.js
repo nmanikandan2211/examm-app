@@ -17,7 +17,6 @@ const SignIn = ({ navigation }) => {
   const handleOnSubmit = () => {
     if (email != '' && password != '') {
       login(email, password);
-      navigation.navigate('Home')
     }
   };
 

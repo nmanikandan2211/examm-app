@@ -8,7 +8,8 @@
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint .",
-    "docter": "npx @react-native-community/cli doctor"
+    "docter": "npx @react-native-community/cli doctor",
+    "link":"react-native link"
   },
   "dependencies": {
     "@react-native-firebase/app": "^14.11.0",
