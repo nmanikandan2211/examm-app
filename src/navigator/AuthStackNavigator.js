@@ -11,7 +11,6 @@ const Stack = createStackNavigator();
 
 const AuthStackNavigator = () => {
 
-
   useEffect(() => {
     GoogleSignin.configure({
       webClientId: "636409869998-qk14sdjl86cn6f6k9ih34a4jmo1ksh2t.apps.googleusercontent.com",
