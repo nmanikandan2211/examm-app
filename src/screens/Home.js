@@ -1,71 +1,105 @@
-/* eslint-disable eslint-comments/no-unlimited-disable */
-/*eslint-disable*/
-
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import React, { useContext } from 'react';
+import React, { useState, useContext } from 'react';
+import { View, Text, SafeAreaView, ScrollView, ImageBackground, TextInput, TouchableOpacity } from 'react-native';
+import Carousel from 'react-native-snap-carousel';
+import Feather from 'react-native-vector-icons/Feather';
 import { AuthContext } from '../navigator/AuthProvider';
+
+import BannerSlider from '../components/BannerSlider';
+import { windowWidth } from '../constants';
+import { freeGames, paidGames, sliderData } from '../data/NewData';
+import CustomSwitch from '../components/CustomSwitch';
+import ListItem from '../components/ListItem';
+import { COLORS } from '../constants';
 
 const Home = ({ navigation }) => {
 
-  const { user, logout } = useContext(AuthContext);
+  const { logout } = useContext(AuthContext);
+  const [gamesTab, setGamesTab] = useState(1);
+
+  const renderBanner = ({ item, index }) => {
+    return <BannerSlider data={item} />;
+  };
+
+  const onSelectSwitch = value => {
+    setGamesTab(value);
+  };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.signOut} >{user.uid}</Text>
-      <Text onPress={() => { logout() }} style={styles.signOut} >SignOut</Text>
-      <View style={styles.bannerContainer}>
-        <Image
-          source={{
-            uri: 'https://cdni.iconscout.com/illustration/premium/thumb/giving-different-feedback-and-review-in-websites-2112230-1779230.png',
-          }}
-          style={styles.banner}
-          resizeMode="contain"
+    <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.primary }}>
+      <ScrollView style={{ padding: 20 }}>
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            marginBottom: 20,
+            backgroundColor: COLORS.black,
+            width: 800
+          }}>
+          <Text style={{ fontSize: 18, color: COLORS.white }}>
+            Hello John Doe
+          </Text>
+          <TouchableOpacity >
+            <ImageBackground
+              source={require('../assets/images/user-profile.jpg')}
+              style={{ width: 35, height: 35 }}
+              imageStyle={{ borderRadius: 25 }}
+            />
+          </TouchableOpacity>
+        </View>
+        <View
+          style={{ marginVertical: 15, flexDirection: 'row', justifyContent: 'space-between', }}>
+          <Text style={{ fontSize: 18, color: COLORS.white }}>
+            Latest
+          </Text>
+          <TouchableOpacity >
+            <Text style={{ color: COLORS.white }} onPress={() => logout()}>Signout</Text>
+          </TouchableOpacity>
+        </View>
+
+        <Carousel
+          // ref={c => { this._carousel = c; }}
+          data={sliderData}
+          renderItem={renderBanner}
+          sliderWidth={windowWidth - 40}
+          itemWidth={300}
+          loop={true}
         />
-      </View>
-      <TouchableOpacity
-        onPress={() => navigation.navigate('Quiz')}
-        style={styles.button}>
-        <Text style={styles.buttonText}>தொடங்கு</Text>
-      </TouchableOpacity>
-    </View>
+
+        <View style={{ marginVertical: 20 }}>
+          <CustomSwitch
+            selectionMode={1}
+            option1="Free to play"
+            option2="Paid games"
+            onSelectSwitch={onSelectSwitch}
+          />
+        </View>
+
+        {gamesTab == 1 &&
+          freeGames.map(item => (
+            <ListItem
+              key={item.id}
+              photo={item.poster}
+              title={item.title}
+              subTitle={item.subtitle}
+              isFree={item.isFree}
+              onPress={() => navigation.navigate('Quiz')}
+            />
+          ))}
+        {gamesTab == 2 &&
+          paidGames.map(item => (
+            <ListItem
+              key={item.id}
+              photo={item.poster}
+              title={item.title}
+              subTitle={item.subtitle}
+              isFree={item.isFree}
+              price={item.price}
+              onPress={() => navigation.navigate('PhoneSignUp')}
+            />
+          ))}
+      </ScrollView>
+    </SafeAreaView>
   );
-};
+}
 
 export default Home;
-
-const styles = StyleSheet.create({
-  banner: {
-    height: 300,
-    width: 300,
-  },
-  bannerContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    flex: 1,
-  },
-  container: {
-    paddingTop: 40,
-    paddingHorizontal: 20,
-    height: '100%',
-  },
-  button: {
-    width: '100%',
-    backgroundColor: '#1A759F',
-    padding: 16,
-    borderRadius: 16,
-    alignItems: 'center',
-    marginBottom: 30,
-  },
-  buttonText: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: 'white',
-    fontFamily: 'MuktaMalar-Bold'
-  },
-  signOut: {
-    textAlign: 'center',
-    color: '#1A759F',
-    fontSize: 16,
-
-  }
-});

@@ -1,11 +1,7 @@
-/* eslint-disable eslint-comments/no-unlimited-disable */
-/*eslint-disable*/
-
 import React, { useState, useContext } from 'react';
 import { Text, View, SafeAreaView, StyleSheet, TextInput, TouchableOpacity, Image, StatusBar, Alert } from 'react-native';
 import { COLORS } from '../constants';
 import { AuthContext } from '../navigator/AuthProvider';
-
 
 const PhoneSignUp = ({ navigation }) => {
 

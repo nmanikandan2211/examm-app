@@ -1,9 +1,6 @@
-/* eslint-disable eslint-comments/no-unlimited-disable */
-/*eslint-disable*/
-
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
-import { COLORS } from '../constants/theme';
+import { COLORS } from '../constants/Theme';
 
 const FormButton = ({
   labelText = '',

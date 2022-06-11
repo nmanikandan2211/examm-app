@@ -1,11 +1,8 @@
-/* eslint-disable eslint-comments/no-unlimited-disable */
-/*eslint-disable*/
-
 import React, { useState, useContext } from 'react';
 import { View, Text, SafeAreaView, Alert } from 'react-native';
 import FormButton from '../components/FormButton';
 import FormInput from '../components/FormInput';
-import { COLORS } from '../constants/theme';
+import { COLORS } from '../constants/Theme';
 import { AuthContext } from '../navigator/AuthProvider';
 
 const SignUp = ({ navigation }) => {
