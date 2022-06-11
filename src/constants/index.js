@@ -1,10 +1,5 @@
-/* eslint-disable eslint-comments/no-unlimited-disable */
-/*eslint-disable*/
+import { COLORS, SIZES, FONTS } from './Theme';
+import { windowWidth, windowHight } from './Dimension';
 
-import { COLORS, SIZES, FONTS } from './theme';
 
-export {
-  COLORS,
-  SIZES,
-  FONTS,
-}
+export { COLORS, SIZES, FONTS, windowHight, windowWidth }

@@ -276,4 +276,4 @@ const Quiz = ({ navigation }) => {
   )
 }
 
-export default Quiz
+export default Quiz;

@@ -1,7 +1,3 @@
-/* eslint-disable eslint-comments/no-unlimited-disable */
-/*eslint-disable*/
-
-
 import React, { useEffect } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
@@ -17,7 +13,6 @@ const AuthStackNavigator = () => {
     });
 
   }, []);
-
 
   return (
     <Stack.Navigator

@@ -1,13 +1,10 @@
-/* eslint-disable eslint-comments/no-unlimited-disable */
-/*eslint-disable*/
-
 import React, { useRef, useState, useEffect } from 'react';
 import auth from '@react-native-firebase/auth';
 import { View, SafeAreaView, Text, StyleSheet, StatusBar, TextInput, Button, Alert } from 'react-native';
-import { COLORS, SIZES, FONTS } from '../constants/theme';
+import { COLORS, SIZES, FONTS } from '../constants/Theme';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
-const VerificationScreen = ({ route: { params: { phoneNumber } }, navigation }) => {
+const OTP = ({ route: { params: { phoneNumber } }, navigation }) => {
 
   const [confirm, setConfirm] = useState(null);
 
@@ -232,4 +229,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default VerificationScreen;
+export default OTP;
